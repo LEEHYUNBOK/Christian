@@ -22,9 +22,9 @@ public class MemberController {
     // /login 페이지 이동
     @PostMapping("/login")
     public TokenDTO login(@RequestBody LoginDTO memberLoginRequestDto) {
-        String memberId = memberLoginRequestDto.getMemberId();
+        String loginId = memberLoginRequestDto.getLoginId();
         String password = memberLoginRequestDto.getPassword();
-        TokenDTO tokenDTO = memberService.login(memberId, password);
+        TokenDTO tokenDTO = memberService.login(loginId, password);
         return tokenDTO;
     }
 
