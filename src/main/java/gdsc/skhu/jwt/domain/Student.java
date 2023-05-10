@@ -29,7 +29,7 @@ public class Student {
     @Column(nullable = true)
     private String memo;
 
-    @ManyToOne(targetEntity = Member.class,fetch = FetchType.LAZY)
-    @JoinColumn(name = "memberId")
-    private Member member;
+    @ManyToOne(targetEntity = ClassType.class,fetch = FetchType.LAZY)
+    @JoinColumn(name = "classId")
+    private ClassType classType;
 }
