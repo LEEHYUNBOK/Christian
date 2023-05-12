@@ -1,5 +1,6 @@
 package gdsc.skhu.jwt.service;
 
+import gdsc.skhu.jwt.domain.DTO.MemberDTO;
 import gdsc.skhu.jwt.domain.DTO.TokenDTO;
 import gdsc.skhu.jwt.jwt.TokenProvider;
 import gdsc.skhu.jwt.repository.MemberRepository;
@@ -34,4 +35,5 @@ public class MemberService {
 
         return tokenDTO;
     }
+
 }
