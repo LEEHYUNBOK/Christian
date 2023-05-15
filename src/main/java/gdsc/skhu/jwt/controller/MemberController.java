@@ -1,6 +1,7 @@
 package gdsc.skhu.jwt.controller;
 
 
+import gdsc.skhu.jwt.domain.DTO.JoinDTO;
 import gdsc.skhu.jwt.domain.DTO.LoginDTO;
 import gdsc.skhu.jwt.domain.DTO.TokenDTO;
 import gdsc.skhu.jwt.service.MemberService;
@@ -26,6 +27,11 @@ public class MemberController {
         String password = memberLoginRequestDto.getPassword();
         TokenDTO tokenDTO = memberService.login(loginId, password);
         return tokenDTO;
+    }
+    @PostMapping("/join")
+    public ResponseEntity<String> join(@RequestBody JoinDTO memberJoinDto) {
+        memberService.join(memberJoinDto);
+        return ResponseEntity.ok("회원가입 성공");
     }
 
     @GetMapping("/admin")
