@@ -20,7 +20,7 @@ public class JwtUserDetailsService implements UserDetailsService {
     // USer 찾아서 UserDeails 객체 형식으로 return
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException{
-        return memberRepository.findByMemberId(username)
+        return memberRepository.findByEmail(username)
                 .map(this::createUserDetails)
                 .orElseThrow(()->new UsernameNotFoundException("해당 ID를 찾을 수 없습니다."));
     }

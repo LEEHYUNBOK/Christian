@@ -15,7 +15,7 @@ public class JoinDTO {
 
     public Member toEntity() {
         return Member.builder()
-                .memberId(id)
+                .email(id)
                 .password(password)
                 .name(name)
                 .roles(Collections.singletonList("USER"))

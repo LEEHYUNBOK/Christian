@@ -40,7 +40,7 @@ public class MemberService {
 
     @Transactional
     public void join(JoinDTO memberJoinDto) {
-        if(memberRepository.findByMemberId(memberJoinDto.getId()).isPresent()) {
+        if(memberRepository.findByEmail(memberJoinDto.getId()).isPresent()) {
             throw new IllegalStateException("이미 존재하는 아이디입니다.");
         }
 

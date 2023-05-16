@@ -21,9 +21,13 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 @Entity
 public class Member implements UserDetails {
+    
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
+    private Long id;
+
     @Column(updatable = false, unique = true, nullable = false)
-    private String memberId;
+    private String email;
 
     @Column(nullable = false)
     private String password;
@@ -47,7 +51,7 @@ public class Member implements UserDetails {
 
     @Override
     public String getUsername() {
-        return memberId;
+        return email;
     }
 
     @Override
