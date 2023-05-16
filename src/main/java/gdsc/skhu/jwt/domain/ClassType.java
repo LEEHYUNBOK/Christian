@@ -1,5 +1,7 @@
 package gdsc.skhu.jwt.domain;
 
+import gdsc.skhu.jwt.domain.DTO.ClassTypeDTO;
+import gdsc.skhu.jwt.domain.DTO.TeacherDTO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -28,4 +30,11 @@ public class ClassType {
 
     @OneToMany(mappedBy = "classType", fetch = FetchType.LAZY,cascade = CascadeType.PERSIST, orphanRemoval = true)
     private List<Student> students =new ArrayList<>();
+
+    public static ClassTypeDTO ToDTO(ClassType classType) {
+        return ClassTypeDTO.builder()
+                .name(classType.getName())
+                .students(null)
+                .build();
+    }
 }

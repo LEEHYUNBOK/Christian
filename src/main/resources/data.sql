@@ -1,6 +1,6 @@
 use christian;
 
-insert into teacher(email, password, name) values ('admin', '1234', 'test');
+insert into teacher(email, password, name) values ('admin11', '{bcrypt}$2a$10$dSga3yqkNj9UT/7cv76AM.gnOGBZQz0Nz.sNgbmktf.lzvcUZaNPq', 'test');
 insert into teacher_roles(teacher_id, roles) values (1, 'ADMIN');
 
 insert into class_type(name, teacher_id) values ('test1', 1);

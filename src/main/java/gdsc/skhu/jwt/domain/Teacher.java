@@ -1,5 +1,6 @@
 package gdsc.skhu.jwt.domain;
 
+import gdsc.skhu.jwt.domain.DTO.TeacherDTO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -47,6 +48,18 @@ public class Teacher implements UserDetails {
         return this.roles.stream()
                 .map(SimpleGrantedAuthority::new)
                 .collect(Collectors.toList());
+    }
+
+    public TeacherDTO ToDTO(Teacher teacher) {
+        return TeacherDTO.builder()
+                .email(teacher.getEmail())
+                .name(teacher.getName())
+                .classTypes(
+                        teacher.getClassType().stream()
+                                .map(ClassType::ToDTO)
+                                .collect(Collectors.toList())
+                )
+                .build();
     }
 
     @Override
