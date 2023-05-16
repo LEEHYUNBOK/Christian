@@ -62,6 +62,11 @@ public class Teacher implements UserDetails {
                 .build();
     }
 
+    public void update(TeacherDTO teacher) {
+        this.email = teacher.getEmail();
+        this.name = teacher.getName();
+    }
+
     @Override
     public String getUsername() {
         return email;

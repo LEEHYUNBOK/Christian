@@ -38,6 +38,12 @@ public class TeacherController {
         return ResponseEntity.ok(teacher);
     }
 
+    @PatchMapping("/teacher/update")
+    public ResponseEntity<String> updateByEmail(@RequestBody TeacherDTO teacherDTO) {
+        teacherService.updateTeacher(teacherDTO);
+        return ResponseEntity.ok("success");
+    }
+
     @GetMapping("/admin")
     public ResponseEntity<String> admin() {
         return ResponseEntity.ok("admin");

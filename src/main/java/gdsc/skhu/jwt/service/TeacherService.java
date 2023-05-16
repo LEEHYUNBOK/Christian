@@ -61,6 +61,13 @@ public class TeacherService {
     }
 
     @Transactional
+    public void updateTeacher(TeacherDTO updateTeacher){
+        Teacher teacher = findByEmail(updateTeacher.getEmail());
+        teacher.update(updateTeacher);
+        teacherRepository.save(teacher);
+    }
+
+    @Transactional
     public Teacher findByEmail(String email) throws UsernameNotFoundException {
         return teacherRepository.findByEmail(email)
                 .orElseThrow(() -> new NoSuchElementException(String.format("해당 유저(%s)를 찾을 수 없습니다.", email)));
