@@ -15,9 +15,9 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 public class ClassType {
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(updatable = false, unique = true, nullable = false)
-    private String id;
+    private Long id;
 
     @Column(nullable = false)
     private String name;

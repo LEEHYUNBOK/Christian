@@ -13,8 +13,8 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Entity
 public class Student {
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(updatable = false, unique = true, nullable = false)
     private Long id;
 
     @Column(nullable = false)
