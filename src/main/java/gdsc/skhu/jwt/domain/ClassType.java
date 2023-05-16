@@ -22,9 +22,9 @@ public class ClassType {
     @Column(nullable = false)
     private String name;
 
-    @ManyToOne(targetEntity = Member.class,fetch = FetchType.LAZY)
-    @JoinColumn(name = "teacher")
-    private Member member;
+    @ManyToOne(targetEntity = Teacher.class,fetch = FetchType.LAZY)
+    @JoinColumn(name = "teacher_id")
+    private Teacher teacher;
 
     @OneToMany(mappedBy = "classType", fetch = FetchType.LAZY,cascade = CascadeType.PERSIST, orphanRemoval = true)
     private List<Student> students =new ArrayList<>();

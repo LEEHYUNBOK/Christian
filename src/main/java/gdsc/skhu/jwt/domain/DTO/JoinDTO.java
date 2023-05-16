@@ -1,6 +1,6 @@
 package gdsc.skhu.jwt.domain.DTO;
 
-import gdsc.skhu.jwt.domain.Member;
+import gdsc.skhu.jwt.domain.Teacher;
 import lombok.Builder;
 import lombok.Data;
 
@@ -13,8 +13,8 @@ public class JoinDTO {
     private String password;
     private String id;
 
-    public Member toEntity() {
-        return Member.builder()
+    public Teacher toEntity() {
+        return Teacher.builder()
                 .email(id)
                 .password(password)
                 .name(name)

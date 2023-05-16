@@ -1,6 +1,5 @@
 package gdsc.skhu.jwt.domain.DTO;
 
-import gdsc.skhu.jwt.domain.ClassType;
 import lombok.Builder;
 import lombok.Data;
 import lombok.Getter;
@@ -12,7 +11,7 @@ import java.util.List;
 @Getter
 @Setter
 @Builder
-public class MemberDTO {
+public class TeacherDTO {
 
     private String memberId;
 

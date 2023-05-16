@@ -3,7 +3,7 @@ package gdsc.skhu.jwt.service;
 import gdsc.skhu.jwt.domain.DTO.JoinDTO;
 import gdsc.skhu.jwt.domain.DTO.TokenDTO;
 import gdsc.skhu.jwt.jwt.TokenProvider;
-import gdsc.skhu.jwt.repository.MemberRepository;
+import gdsc.skhu.jwt.repository.TeacherRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -15,9 +15,9 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
-public class MemberService {
+public class TeacherService {
 
-    private final MemberRepository memberRepository;
+    private final TeacherRepository teacherRepository;
     private final TokenProvider tokenProvider;
     private final AuthenticationManagerBuilder authenticationManagerBuilder;
     private final PasswordEncoder passwordEncoder;
@@ -40,12 +40,12 @@ public class MemberService {
 
     @Transactional
     public void join(JoinDTO memberJoinDto) {
-        if(memberRepository.findByEmail(memberJoinDto.getId()).isPresent()) {
+        if(teacherRepository.findByEmail(memberJoinDto.getId()).isPresent()) {
             throw new IllegalStateException("이미 존재하는 아이디입니다.");
         }
 
         memberJoinDto.setPassword(passwordEncoder.encode(memberJoinDto.getPassword()));
-        memberRepository.save(memberJoinDto.toEntity());
+        teacherRepository.save(memberJoinDto.toEntity());
     }
 
 }

@@ -1,7 +1,7 @@
 package gdsc.skhu.jwt.service;
 
-import gdsc.skhu.jwt.domain.Member;
-import gdsc.skhu.jwt.repository.MemberRepository;
+import gdsc.skhu.jwt.domain.Teacher;
+import gdsc.skhu.jwt.repository.TeacherRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -14,23 +14,23 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class JwtUserDetailsService implements UserDetailsService {
-    private final MemberRepository memberRepository;
+    private final TeacherRepository teacherRepository;
     private final PasswordEncoder passwordEncoder;
 
     // USer 찾아서 UserDeails 객체 형식으로 return
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException{
-        return memberRepository.findByEmail(username)
+        return teacherRepository.findByEmail(username)
                 .map(this::createUserDetails)
                 .orElseThrow(()->new UsernameNotFoundException("해당 ID를 찾을 수 없습니다."));
     }
 
     // UserDetails 생성
-    private UserDetails createUserDetails(Member member){
+    private UserDetails createUserDetails(Teacher teacher){
         return User.builder()
-                .username(member.getUsername())
-                .password(member.getPassword())
-                .roles(member.getRoles().toArray(new String[0]))
+                .username(teacher.getUsername())
+                .password(teacher.getPassword())
+                .roles(teacher.getRoles().toArray(new String[0]))
                 .build();
     }
 }

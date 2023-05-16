@@ -20,8 +20,8 @@ import java.util.stream.Collectors;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Member implements UserDetails {
-    
+public class Teacher implements UserDetails {
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Long id;
@@ -35,7 +35,7 @@ public class Member implements UserDetails {
     @Column(nullable = false)
     private String name;
 
-    @OneToMany(mappedBy = "member", fetch = FetchType.LAZY,cascade = CascadeType.PERSIST, orphanRemoval = true)
+    @OneToMany(mappedBy = "teacher", fetch = FetchType.LAZY,cascade = CascadeType.PERSIST, orphanRemoval = true)
     private List<ClassType> classType =new ArrayList<>();
 
     @ElementCollection(fetch = FetchType.EAGER)
