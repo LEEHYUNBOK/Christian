@@ -13,7 +13,7 @@ import java.util.List;
 @Builder
 public class TeacherDTO {
 
-    private String memberId;
+    private String email;
 
     private String name;
 
