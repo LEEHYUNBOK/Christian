@@ -12,6 +12,7 @@ public class JoinDTO {
     private String name;
     private String password;
     private String id;
+    private String className;
 
     public Teacher toEntity() {
         return Teacher.builder()

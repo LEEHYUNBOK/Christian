@@ -27,6 +27,7 @@ public class TeacherService {
     private final TokenProvider tokenProvider;
     private final AuthenticationManagerBuilder authenticationManagerBuilder;
     private final PasswordEncoder passwordEncoder;
+    private final ClassTypeService classTypeService;
 
     @Transactional
     public TokenDTO login(String loginId, String password) {
@@ -50,8 +51,10 @@ public class TeacherService {
             throw new IllegalStateException("이미 존재하는 아이디입니다.");
         }
 
+
         memberJoinDto.setPassword(passwordEncoder.encode(memberJoinDto.getPassword()));
-        teacherRepository.save(memberJoinDto.toEntity());
+        Teacher teacher = teacherRepository.save(memberJoinDto.toEntity());
+        classTypeService.save(memberJoinDto.getClassName(), teacher);
     }
 
     @Transactional

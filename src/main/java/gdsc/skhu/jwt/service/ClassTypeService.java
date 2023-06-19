@@ -2,6 +2,7 @@ package gdsc.skhu.jwt.service;
 
 import gdsc.skhu.jwt.domain.ClassType;
 import gdsc.skhu.jwt.domain.DTO.ClassTypeDTO;
+import gdsc.skhu.jwt.domain.Teacher;
 import gdsc.skhu.jwt.repository.ClassTypeRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -24,5 +25,15 @@ public class ClassTypeService {
         return classTypes.stream()
                 .map(ClassType::ToDTO)
                 .collect(Collectors.toList());
+    }
+
+    @Transactional
+    public void save(String className, Teacher teacher){
+        classTypeRepository.save(
+                ClassType.builder()
+                        .name(className)
+                        .teacher(teacher)
+                        .build()
+        );
     }
 }
