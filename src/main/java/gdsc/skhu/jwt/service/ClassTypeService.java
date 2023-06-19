@@ -36,4 +36,10 @@ public class ClassTypeService {
                         .build()
         );
     }
+
+    @Transactional
+    public void update(String name, ClassType classType){
+        classType.update(name);
+        classTypeRepository.save(classType);
+    }
 }

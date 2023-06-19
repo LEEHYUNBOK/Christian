@@ -58,15 +58,16 @@ public class TeacherService {
     }
 
     @Transactional
-    public TeacherDTO findEmail(String email){
+    public TeacherDTO findEmail(String email) {
         Teacher teacher = findByEmail(email);
         return teacher.ToDTO(teacher);
     }
 
     @Transactional
-    public void updateTeacher(TeacherDTO updateTeacher){
+    public void updateTeacher(TeacherDTO updateTeacher) {
         Teacher teacher = findByEmail(updateTeacher.getEmail());
         teacher.update(updateTeacher);
+        classTypeService.update(updateTeacher.getClassName(), teacher.getClassType());
         teacherRepository.save(teacher);
     }
 

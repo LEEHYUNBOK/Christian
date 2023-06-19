@@ -42,4 +42,8 @@ public class ClassType {
                 .teacher(Teacher.ToDTO(classType.getTeacher()))
                 .build();
     }
+
+    public void update(String name) {
+        this.name = name;
+    }
 }
