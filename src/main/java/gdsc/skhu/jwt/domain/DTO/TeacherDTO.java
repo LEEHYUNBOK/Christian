@@ -17,5 +17,7 @@ public class TeacherDTO {
 
     private String name;
 
-    private ClassTypeDTO classType;
+    private String className;
+
+    private int studentCount;
 }

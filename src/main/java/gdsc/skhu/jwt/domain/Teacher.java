@@ -54,7 +54,8 @@ public class Teacher implements UserDetails {
         return TeacherDTO.builder()
                 .email(teacher.getEmail())
                 .name(teacher.getName())
-                .classType(ClassType.ToDTO(teacher.getClassType()))
+                .className(teacher.getClassType().getName())
+                .studentCount(teacher.getClassType().getStudents().size())
                 .build();
     }
 
