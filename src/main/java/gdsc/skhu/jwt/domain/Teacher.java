@@ -50,7 +50,7 @@ public class Teacher implements UserDetails {
                 .collect(Collectors.toList());
     }
 
-    public TeacherDTO ToDTO(Teacher teacher) {
+    public static TeacherDTO ToDTO(Teacher teacher) {
         return TeacherDTO.builder()
                 .email(teacher.getEmail())
                 .name(teacher.getName())

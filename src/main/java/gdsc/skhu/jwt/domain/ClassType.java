@@ -1,7 +1,6 @@
 package gdsc.skhu.jwt.domain;
 
 import gdsc.skhu.jwt.domain.DTO.ClassTypeDTO;
-import gdsc.skhu.jwt.domain.DTO.TeacherDTO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -40,6 +39,7 @@ public class ClassType {
                                 .map(Student::ToDTO)
                                 .collect(Collectors.toList())
                 )
+                .teacher(Teacher.ToDTO(classType.getTeacher()))
                 .build();
     }
 }

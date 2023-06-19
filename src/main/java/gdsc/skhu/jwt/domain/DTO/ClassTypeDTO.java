@@ -13,5 +13,6 @@ import java.util.List;
 @Builder
 public class ClassTypeDTO {
     private String name;
+    private TeacherDTO teacher;
     private List<StudentDTO> students;
 }
