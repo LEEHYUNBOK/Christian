@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Getter
 @Builder
@@ -34,7 +35,11 @@ public class ClassType {
     public static ClassTypeDTO ToDTO(ClassType classType) {
         return ClassTypeDTO.builder()
                 .name(classType.getName())
-                .students(null)
+                .students(
+                        classType.getStudents().stream()
+                                .map(Student::ToDTO)
+                                .collect(Collectors.toList())
+                )
                 .build();
     }
 }

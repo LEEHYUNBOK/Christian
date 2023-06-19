@@ -10,6 +10,7 @@ import lombok.Setter;
 @Setter
 @Builder
 public class StudentDTO {
+    private String name;
     private String photo;
     private String age;
     private String sex;

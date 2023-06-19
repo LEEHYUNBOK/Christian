@@ -1,5 +1,6 @@
 package gdsc.skhu.jwt.domain;
 
+import gdsc.skhu.jwt.domain.DTO.StudentDTO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -35,4 +36,14 @@ public class Student {
     @ManyToOne(targetEntity = ClassType.class,fetch = FetchType.LAZY)
     @JoinColumn(name = "classId")
     private ClassType classType;
+
+    public static StudentDTO ToDTO(Student student) {
+        return StudentDTO.builder()
+                .name(student.name)
+                .age(student.age)
+                .memo(student.memo)
+                .photo(student.photo)
+                .sex(student.photo)
+                .build();
+    }
 }
