@@ -17,5 +17,5 @@ public class TeacherDTO {
 
     private String name;
 
-    private List<ClassTypeDTO> classTypes;
+    private ClassTypeDTO classType;
 }

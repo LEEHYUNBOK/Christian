@@ -25,7 +25,7 @@ public class ClassType {
     @Column(nullable = false)
     private String name;
 
-    @ManyToOne(targetEntity = Teacher.class,fetch = FetchType.LAZY)
+    @OneToOne(targetEntity = Teacher.class,fetch = FetchType.LAZY)
     @JoinColumn(name = "teacher_id")
     private Teacher teacher;
 

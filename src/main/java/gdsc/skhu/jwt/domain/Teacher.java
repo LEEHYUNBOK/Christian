@@ -36,8 +36,8 @@ public class Teacher implements UserDetails {
     @Column(nullable = false)
     private String name;
 
-    @OneToMany(mappedBy = "teacher", fetch = FetchType.LAZY,cascade = CascadeType.PERSIST, orphanRemoval = true)
-    private List<ClassType> classType =new ArrayList<>();
+    @OneToOne(mappedBy = "teacher", fetch = FetchType.LAZY,cascade = CascadeType.PERSIST, orphanRemoval = true)
+    private ClassType classType;
 
     @ElementCollection(fetch = FetchType.EAGER)
     @Builder.Default
@@ -54,11 +54,7 @@ public class Teacher implements UserDetails {
         return TeacherDTO.builder()
                 .email(teacher.getEmail())
                 .name(teacher.getName())
-                .classTypes(
-                        teacher.getClassType().stream()
-                                .map(ClassType::ToDTO)
-                                .collect(Collectors.toList())
-                )
+                .classType(ClassType.ToDTO(teacher.getClassType()))
                 .build();
     }
 
