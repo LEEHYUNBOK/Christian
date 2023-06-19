@@ -30,4 +30,11 @@ public class StudentService {
                         .build()
         );
     }
+
+    public void delete(Long studnetId) {
+        Student student = studentRepository.findById(studnetId)
+                .orElseThrow(()->new UsernameNotFoundException("해당 수업을 찾을 수 없습니다."));
+
+        studentRepository.delete(student);
+    }
 }
