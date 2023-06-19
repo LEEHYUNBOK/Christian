@@ -33,6 +33,7 @@ public class ClassType {
 
     public static ClassTypeDTO ToDTO(ClassType classType) {
         return ClassTypeDTO.builder()
+                .id(classType.getId())
                 .name(classType.getName())
                 .students(
                         classType.getStudents().stream()

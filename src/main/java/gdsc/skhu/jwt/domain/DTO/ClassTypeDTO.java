@@ -12,6 +12,7 @@ import java.util.List;
 @Setter
 @Builder
 public class ClassTypeDTO {
+    private Long id;
     private String name;
     private TeacherDTO teacher;
     private List<StudentDTO> students;
