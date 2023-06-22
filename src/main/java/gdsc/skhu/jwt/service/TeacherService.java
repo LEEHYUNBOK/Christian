@@ -1,5 +1,6 @@
 package gdsc.skhu.jwt.service;
 
+import gdsc.skhu.jwt.Mapper.TeacherMapper;
 import gdsc.skhu.jwt.domain.DTO.JoinDTO;
 import gdsc.skhu.jwt.domain.DTO.TeacherDTO;
 import gdsc.skhu.jwt.domain.DTO.TokenDTO;
@@ -28,6 +29,7 @@ public class TeacherService {
     private final AuthenticationManagerBuilder authenticationManagerBuilder;
     private final PasswordEncoder passwordEncoder;
     private final ClassTypeService classTypeService;
+    private final TeacherMapper teacherMapper = TeacherMapper.INSTANCE;
 
     @Transactional
     public TokenDTO login(String loginId, String password) {
@@ -60,7 +62,8 @@ public class TeacherService {
     @Transactional
     public TeacherDTO findEmail(String email) {
         Teacher teacher = findByEmail(email);
-        return teacher.ToDTO(teacher);
+//        return teacher.ToDTO(teacher);
+        return teacherMapper.teacherToDto(teacher);
     }
 
     @Transactional
