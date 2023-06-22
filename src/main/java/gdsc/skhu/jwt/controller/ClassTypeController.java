@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -20,5 +21,10 @@ public class ClassTypeController {
     public ResponseEntity<List<ClassTypeDTO>> findAll(){
         List<ClassTypeDTO> classTypes = classTypeService.findAll();
         return ResponseEntity.ok(classTypes);
+    }
+
+    @GetMapping("/class/{id}")
+    public ClassTypeDTO findById(@PathVariable Long id) {
+        return classTypeService.findById(id);
     }
 }

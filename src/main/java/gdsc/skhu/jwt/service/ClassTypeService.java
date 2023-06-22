@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -38,6 +39,14 @@ public class ClassTypeService {
                         .name(className)
                         .teacher(teacher)
                         .build()
+        );
+    }
+
+    @Transactional
+    public ClassTypeDTO findById(Long id) {
+        return classTypeMapper.classTypeToDTO(
+                classTypeRepository.findById(id)
+                        .orElseThrow(() -> new NoSuchElementException(String.format("해당 수업을 찾을 수 없습니다.")))
         );
     }
 
