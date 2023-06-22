@@ -1,5 +1,6 @@
 package gdsc.skhu.jwt.service;
 
+import gdsc.skhu.jwt.Mapper.ClassTypeMapper;
 import gdsc.skhu.jwt.domain.ClassType;
 import gdsc.skhu.jwt.domain.DTO.ClassTypeDTO;
 import gdsc.skhu.jwt.domain.Teacher;
@@ -18,13 +19,16 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class ClassTypeService {
     private final ClassTypeRepository classTypeRepository;
+    private final ClassTypeMapper classTypeMapper = ClassTypeMapper.INSTANCE;
 
     @Transactional
     public List<ClassTypeDTO> findAll(){
-        List<ClassType> classTypes = classTypeRepository.findAll();
-        return classTypes.stream()
-                .map(ClassType::ToDTO)
-                .collect(Collectors.toList());
+//        List<ClassType> classTypes = classTypeRepository.findAll();
+//        return classTypes.stream()
+//                .map(ClassType::ToDTO)
+//                .collect(Collectors.toList());
+
+        return classTypeMapper.listClassTypeToDTO(classTypeRepository.findAll());
     }
 
     @Transactional
