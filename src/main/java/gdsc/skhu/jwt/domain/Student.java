@@ -47,4 +47,8 @@ public class Student {
                 .sex(student.photo)
                 .build();
     }
+
+    public void addClass(ClassType classType) {
+        this.classType = classType;
+    }
 }
