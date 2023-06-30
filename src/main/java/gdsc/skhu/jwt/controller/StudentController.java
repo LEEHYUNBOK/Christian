@@ -14,14 +14,14 @@ public class StudentController {
     private final StudentService studentService;
     private final ImageService imageService;
 
-    @PostMapping("/student/{id}/save")
+    @PostMapping("/student/{classId}/save")
     public String studentSave(
             @ModelAttribute StudentDTO studentDTO,
-            @PathVariable Long id,
+            @PathVariable Long classId,
             @ModelAttribute MultipartFile image
     ) {
-        imageService.insertImage(image,"I`m batman", "Student");
-        studentService.save(id,studentDTO, image);
+        System.out.println(studentDTO.toString());
+        studentService.save(classId,studentDTO, image);
         return "Success";
     }
 

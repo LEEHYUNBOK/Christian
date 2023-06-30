@@ -39,7 +39,7 @@ public class Student {
 
     public static StudentDTO ToDTO(Student student) {
         return StudentDTO.builder()
-//                .id(student.id)
+                .id(student.id)
                 .name(student.name)
                 .age(student.age)
                 .memo(student.memo)
