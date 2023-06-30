@@ -42,11 +42,11 @@ public class ImageService {
     }
 
 
-//    public void deleteImage(String filePath) {
+    public void deleteImage(String filePath) {
 //        boolean isDelete = storage.delete(BlobId.of(bucketName, filePath));
 //
 //        if (!isDelete) {
 //            throw new GCSFIleNotFoundException();
 //        }
-//    }
+    }
 }
