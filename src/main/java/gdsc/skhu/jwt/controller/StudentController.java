@@ -21,7 +21,7 @@ public class StudentController {
             @ModelAttribute MultipartFile image
     ) {
         imageService.insertImage(image,"I`m batman", "Student");
-        studentService.save(id,studentDTO);
+        studentService.save(id,studentDTO, image);
         return "Success";
     }
 
