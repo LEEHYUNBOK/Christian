@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -32,7 +33,7 @@ public class StudentService {
 //                .photo(studentDTO.getPhoto())
 //                .classType(classType)
 //                .build();
-        studentDTO.setPhoto(imageService.insertImage(image, studentDTO.getName()+"_"+(studentRepository.findAll().size()+1), "Student"));
+        studentDTO.setPhoto(imageService.insertImage(image, studentDTO.getName()+"_"+ UUID.randomUUID().toString(), "Student"));
         Student student = studentMapper.DtoToStudent(studentDTO);
         student.addClass(classType);
         studentRepository.save(student);
@@ -41,7 +42,7 @@ public class StudentService {
     public void delete(Long studnetId) {
         Student student = studentRepository.findById(studnetId)
                 .orElseThrow(()->new UsernameNotFoundException("해당 수업을 찾을 수 없습니다."));
-        imageService.deleteImage(student.getPhoto());
+        imageService.deleteImage(student.getPhoto().split("testchristian/")[1]);
         studentRepository.delete(student);
     }
 }
