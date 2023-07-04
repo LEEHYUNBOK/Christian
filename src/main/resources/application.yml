@@ -23,7 +23,6 @@ spring:
       storage:
         credentials:
           location: file:${GOOGLE_APPLICATION_CREDENTIALS}
-        project-id: lunar-alpha-372905
 bucket:
   name: testchristian
 jwt:
