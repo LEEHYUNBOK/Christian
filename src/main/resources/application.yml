@@ -18,13 +18,14 @@ spring:
   sql:
     init:
       mode: always
-#  cloud:
-#    gcp:
-#      storage:
-#        credentials:
-#          location: classpath:{위에서 만든 key 파일 이름}.json
-#    project-id: {key 파일 안에 있는 project_id 값}
-#    bucket: {버킷 이름}
+  cloud:
+    gcp:
+      storage:
+        credentials:
+          location: file:${GOOGLE_APPLICATION_CREDENTIALS}
+        project-id: lunar-alpha-372905
+bucket:
+  name: testchristian
 jwt:
   secret: ${JWT_SECRET_KEY}
   token-validity-in-milliseconds: 86400000
